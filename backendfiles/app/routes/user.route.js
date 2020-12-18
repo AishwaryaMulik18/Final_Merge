@@ -1,13 +1,14 @@
 module.exports = app => {
   const users = require("../controllers/user.controller.js");
   const cors = require("cors");
+ 
   var router = require("express").Router();
-
+  router.use(cors());
   const bodyParser = require("body-parser");
 
   router.use(bodyParser.json());
 
-  router.use(cors());
+ 
 
   // Create a new Tutorial
   router.post("/", users.create);

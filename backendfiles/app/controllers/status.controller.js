@@ -1,47 +1,49 @@
 const db = require("../models");
-const Favourite = db.favourite;
+const status = db.status;
 const Op = db.Sequelize.Op;
 
 const { QueryTypes } = require('sequelize');
 exports.findAll = (req, res) => {
-    Favourite.findAll()
+    status.findAll()
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving favourites."
+                    err.message || "Some error occurred while retrieving tutorials."
             });
         });
 };
 
 exports.create = (req, res) => {
-
-    const favourite = {
+    
+    const status1 = {
         quizid: req.body.quizid,
         userid: req.body.userid,
-        };
+        score: req.body.score,
+        QuestionsAttempted:req.body.QuestionsAttempted
+    };
 
-    // Save Favourite in the database
-    Favourite.create(favourite)
+    // Save Tutorial in the database
+    status.create(status1)
+    
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Favourite."
+                    err.message || "Some error occurred while creating the Tutorial."
             });
         });
-
 };
 
 exports.findOne = async (req, res) => {
     const quizid = req.query.quizid;
     const userid = req.query.userid;
     
-    Favourite.findAll({ where: {
+    status.findAll({ where: {
          quizid:quizid ,
          userid:userid
         //  $and :{userid:userid}
@@ -51,7 +53,7 @@ exports.findOne = async (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Favourite with id=" + quizid
+                message: "Error retrieving Tutorial with"
             });
         });
 
@@ -60,74 +62,82 @@ exports.findOne = async (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    const quizid = req.params.id;
+    const quizid = req.query.quizid;
+    const userid = req.query.userid;
 
-    Favourite.destroy({
-        where: { quizid:quizid }
+    status.destroy({
+        where: { 
+            quizid:quizid,
+            userid:userid
+         }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Favourite was deleted successfully!"
+                    message: "Tutorial was deleted successfully!"
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Favourite with id=${id}. Maybe Favourite was not found!`
+                    message: `Cannot delete Tutorial with id. Maybe Tutorial was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Favourite with id=" + id
+                message: "Could not delete Tutorial with id"
             });
         });
 };
 
 exports.update = (req, res) => {
-    const id = req.params.id;
+    const quizid = req.query.quizid;
+    const userid = req.query.userid;
+console.log("---------------------------");
 
-    Favourite.update(req.body, {
-        where: { id: id }
+    status.update(req.body, {
+        where: { 
+            quizid:quizid ,
+            userid:userid }
     })
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "Favourite was updated successfully."
+                    message: "staus was updated successfully."
                 });
             } else {
                 res.send({
-                    message: `Cannot update Favourite with id=${id}. Maybe Favourite was not found or req.body is empty!`
+                    message: `Cannot update Tutorial  Maybe Tutorial was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Favourite with id=" + id
+                message: "Error updating status"
             });
         });
 };
 
 exports.deleteAll = (req, res) => {
-    Favourite.destroy({
+    status.destroy({
         where: {},
         truncate: false
     })
         .then(nums => {
-            res.send({ message: `${nums} Favourites were deleted successfully!` });
+            res.send({ message: `${nums} Tutorials were deleted successfully!` });
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while removing all favourites."
+                    err.message || "Some error occurred while removing all tutorials."
             });
         });
 };
 
 
-exports.getFavourite = (req,res)=>{
+/*exports.getQuizScore = (req,res)=>{
 
-    //show favourite using user id
-    db.sequelize.query("select * from favourites where userid = ? ",
+    //show quizscore using user id
+    db.sequelize.query("select * from quizscores where userid = ? ",
     {
         replacements:[req.params.id], 
         type: db.sequelize.QueryTypes.SELECT})
@@ -135,17 +145,17 @@ exports.getFavourite = (req,res)=>{
             res.send(data);
             console.log(data);
         });
-// }
-
-// exports.getFavQuiz = (req,res)=>{
-
-//     //show quizname using user id
-//     db.sequelize.query("select quizid from favourites where userid= ?",
-//     {
-//         replacements:[req.params.id], 
-//         type: db.sequelize.QueryTypes.SELECT})
-//         .then(data=>{
-//             res.send(data);
-//             console.log(data);
-//         });
 }
+
+exports.getQuizName = (req,res)=>{
+
+    //show quizname using user id
+    db.sequelize.query("select quizname from quizzes where id=(select quizid from quizscores where userid = ?",
+    {
+        replacements:[req.params.id], 
+        type: db.sequelize.QueryTypes.SELECT})
+        .then(data=>{
+            res.send(data);
+            console.log(data);
+        });
+}*/

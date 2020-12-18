@@ -1,10 +1,10 @@
 module.exports = app => {
     const questions = require("../controllers/question.controller.js");
-  
+    const cors = require("cors");
     var router = require("express").Router();
   
     const bodyParser = require("body-parser");
-  
+    router.use(cors());
   router.use(bodyParser.json());
   
     // Create a new Question
@@ -12,6 +12,8 @@ module.exports = app => {
   
    // Retrieve all Questions
     router.get("/", questions.findAll);
+
+
   
     // // Retrieve all published Questions
    // router.get("/published", questions.findAllPublished);

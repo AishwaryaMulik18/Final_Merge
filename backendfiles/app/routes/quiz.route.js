@@ -1,8 +1,11 @@
 module.exports = app => {
     const quizes = require("../controllers/quiz.controller.js");
-    const cors = require("cors");
     var router = require("express").Router();
+    const cors = require("cors");
+   
     router.use(cors());
+    
+    
     const bodyParser = require("body-parser");
   
   router.use(bodyParser.json());
@@ -14,8 +17,12 @@ module.exports = app => {
     router.get("/", quizes.findAll);
   
     // Retrieve a single Tutorial with id
-    router.get("/:id", quizes.findOne);
+    // router.get("/:id", quizes.findOne);
   
+    router.get("/:category",quizes.findByCategory);
+
+    router.get("/quizid/:id", quizes.findOne);
+
     // Update a Tutorial with id
     router.put("/:id", quizes.update);
   

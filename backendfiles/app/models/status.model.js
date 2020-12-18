@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Favourite = sequelize.define("favourite", {
+    const status = sequelize.define("status", {
       quizid: {
         type: Sequelize.INTEGER,
         references: {
@@ -9,16 +9,24 @@ module.exports = (sequelize, Sequelize) => {
       },
       userid: {
         type: Sequelize.INTEGER,
+        // references: 'users',
+        // referencesKey: 'id'
         references: {
             model:'users',
             Key: 'id'
         }
+      },
+      score:{
+        type: Sequelize.INTEGER
+      },
+      QuestionsAttempted:{
+        type: Sequelize.INTEGER
       }
     },
     {timestamps: false});
-    Favourite.removeAttribute('id');
+    status.removeAttribute('id');
   
-    return Favourite;
+    return status;
   };
 
  

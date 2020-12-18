@@ -38,6 +38,25 @@ exports.findAll = (req, res) => {
 
 };
 
+exports.findByCategory = (req, res) => {
+  const category = req.params.category;
+  // var condition = QuestionsId ? { QuestionsId: { [Op.like]: `%${QuestionsId}%` } } : null;
+console.log("---------------change-----------------");
+
+Quiz.findAll({ where:{
+    category : category
+  } })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving questions."
+      });
+    });
+};
+
 exports.findOne = (req, res) => {
     const id = req.params.id;
   

@@ -29,8 +29,6 @@ export class TokenStorageService {
   }
 
   public getUser() {
-    alert(sessionStorage.getItem('username'));
-    
-    return (sessionStorage.getItem('username'));
+    return JSON.parse(sessionStorage.getItem(USER_KEY)!);
   }
 }

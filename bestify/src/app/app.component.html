@@ -4,6 +4,21 @@
     (userprofileclicked)="changeview($event)"
     (adminpage)="adminview($event)"
   ></app-header>
+  <!-- <div [ngIf]="!isClicked" >
+  <app-main3 (myevent)="updateScroll($event)" ></app-main3>
+</div>
+  <div id="quiz">
+    <app-main1 [ngIf]="!isClicked " (notify)="hideComponent($event)">
+      <h2 style="color: yellow;">IsClick = {{isClicked}}</h2>
+    </app-main1>
+  </div>
+  <div id="game">
+    <app-main2 [ngIf]="!isClicked "></app-main2>
+  </div>
+  <div id="target">
+    <app-admin [ngIf]="!isClicked "></app-admin>
+  </div>
+ -->
 
   <!-- <app-main3 (myevent)="updateScroll($event)"></app-main3> -->
   <!-- <app-herosection (myevent)="updateScroll($event)"></app-herosection>
@@ -24,8 +39,7 @@
   ></app-home>
   <app-admin [ngClass]="{ 'admin-class': !adminpage }"></app-admin>
   <app-user-sidenav *ngIf="isprofileclicked"></app-user-sidenav>
-  <!-- <router-outlet></router-outlet> -->
-  <app-highscore></app-highscore>
+
   <!-- <div id="target">
     <app-admin></app-admin>
   </div>

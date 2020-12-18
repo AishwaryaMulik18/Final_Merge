@@ -128,9 +128,9 @@ exports.deleteAll = (req, res) => {
 exports.getQuizScore = (req,res)=>{
 
     //show quizscore using user id
-    db.sequelize.query("select (select quizname from quizzes where id=(select quizid from quizscores where userid = ?))as quizname, score from quizscores where userid=?",
+    db.sequelize.query("select * from quizscores where userid = ? ",
     {
-        replacements:[req.params.id,req.params.id], 
+        replacements:[req.params.id], 
         type: db.sequelize.QueryTypes.SELECT})
         .then(data=>{
             res.send(data);
@@ -143,7 +143,6 @@ exports.getQuizName = (req,res)=>{
     //show quizname using user id
     db.sequelize.query("select quizname from quizzes where id=(select quizid from quizscores where userid = ?",
     {
-
         replacements:[req.params.id], 
         type: db.sequelize.QueryTypes.SELECT})
         .then(data=>{

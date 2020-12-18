@@ -19,7 +19,9 @@ require("./app/routes/question.route.js")(app);
 require("./app/routes/game.route.js")(app);
 require("./app/routes/gameScore.route.js")(app);
 require("./app/routes/homepage.route.js")(app);
-require("./app/routes/favourite.route.js")(app);
+require("./app/routes/status.route.js")(app);
+
+
 
 // var corsOptions = {
 //   origin: "http://localhost:4200"

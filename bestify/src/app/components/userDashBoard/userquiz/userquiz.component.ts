@@ -8,21 +8,16 @@ import { HttpService } from 'src/app/test/http.service';
 })
 export class UserquizComponent implements OnInit {
 
-  userid:any=1;
- 
   quizscore:any[]=[];
   constructor(private userServ: HttpService) {
-    this.userServ.getQuizScore(this.userid).subscribe((data)=>{
+    this.userServ.getQuizScore().subscribe((data)=>{
       this.quizscore=data;
-      
-      console.log(this.quizscore);
     })
    }
 
    
-  
 
-   displayedColumns: string[] = ['quizname', 'score'];
+   displayedColumns: string[] = ['quizid', 'userid', 'score'];
   //  dataSource = this.quizscore;
 
   ngOnInit(): void {

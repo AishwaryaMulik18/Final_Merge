@@ -90,13 +90,12 @@ export class HeaderComponent implements OnInit {
 
     sessionStorage.removeItem('user');
     this.isLogin = false;
+    this.router.navigate(["/home"]);
   }
 
   goToProfile() {
     console.log('hello');
     this.userprofileclicked.emit(true);
-    this.router.navigate(['/userFavourite']);
-
     // this.router.navigate(['/userprofile']);
   }
 }

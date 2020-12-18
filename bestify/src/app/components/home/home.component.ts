@@ -8,6 +8,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 export class HomeComponent implements OnInit {
   scrollTo: any = '';
   gamestarted: boolean = false;
+  quizpage:boolean=false;
   constructor(private myElement: ElementRef) {}
 
   ngOnInit(): void {}
@@ -34,5 +35,9 @@ export class HomeComponent implements OnInit {
   gamestatus(e:any) {
     this.gamestarted = e;
     console.log(this.gamestarted);
+  }
+
+  hideComponent(event){
+    this.quizpage = event;  
   }
 }

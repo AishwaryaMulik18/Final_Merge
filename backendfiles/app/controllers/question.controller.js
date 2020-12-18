@@ -5,30 +5,30 @@ const Op = db.Sequelize.Op;
 
 
 
-exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.QuestionStatement) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-    return;
-  }
+  exports.create = (req, res) => {
+    // Validate request
+    if (!req.body.QuestionStatement) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
 
-  // Create a Questions 
-  const questions = {
-   
-    QuestionStatement: req.body.QuestionStatement,
-    QuizId: req.body.QuizId,
-    Option1: req.body.Option1,
-    Option2: req.body.Option2,
-    Option3: req.body.Option3,
-    Option4: req.body.Option4,
-    Answers: req.body.Answers,
-
-    IsMcq: req.body.IsMcq ? req.body.IsMcq : false
+    // Create a Questions 
+    const questions = {
     
+      QuestionStatement: req.body.QuestionStatement,
+      QuizId: req.body.QuizId,
+      Option1: req.body.Option1,
+      Option2: req.body.Option2,
+      Option3: req.body.Option3,
+      Option4: req.body.Option4,
+      Answers: req.body.Answers,
 
-  };
+      IsMcq: req.body.IsMcq ? req.body.IsMcq : false
+      
+
+    };
 
   // Save Questions in the database
   Questions.create(questions)
