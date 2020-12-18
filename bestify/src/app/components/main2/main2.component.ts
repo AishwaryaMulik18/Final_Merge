@@ -40,11 +40,6 @@ export class Main2Component implements OnInit, OnDestroy {
     //   this.dataSource.disconnect();
     // }
   }
-  startPlanet()
-  {
-    this.router.navigate(['/planet']);
-
-  }
   startpong() {
     this.router.navigate(['/pong']);
   }

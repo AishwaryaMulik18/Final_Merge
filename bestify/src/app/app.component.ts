@@ -6,12 +6,20 @@ import { ElementRef } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  isClicked:boolean;
   title = 'demo';
   isThemeChange: boolean = false;
   scrollTo: any = '';
   isprofileclicked: boolean = false;
   adminpage: boolean = false;
-  constructor(private myElement: ElementRef) {}
+  constructor(private myElement: ElementRef) {
+    let locat = location.href;
+    if (!!window.location.pathname && window.location.pathname !== '/') {
+        history.replaceState(null,null,location.origin);
+        history.pushState(null, null,locat);
+    
+    }
+  }
   updateTheme(e: any) {
     this.isThemeChange = e;
     console.log('app ' + this.isThemeChange);
@@ -45,5 +53,9 @@ export class AppComponent {
   }
   adminview(e: any) {
     this.adminpage = e;
+  }
+  hideComponent(event){
+    this.isClicked = event;
+   
   }
 }

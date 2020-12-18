@@ -17,9 +17,4 @@ export class AuthServiceService {
   
     });
   }
-
-  gethighScorer() : Observable<any>
-  {
-    return this.http.get(`http://localhost:8080/api/homepage`);
-  }
 }

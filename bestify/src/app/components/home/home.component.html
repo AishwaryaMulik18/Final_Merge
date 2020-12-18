@@ -1,10 +1,15 @@
 <app-herosection
   (myevent)="updateScroll($event)"
   *ngIf="!gamestarted"
+  [ngClass]="{ 'quiz-class': quizpage }"
 ></app-herosection>
 
 <div id="quiz">
-  <app-main1 *ngIf="!gamestarted"></app-main1>
+  <app-main1
+    *ngIf="!gamestarted"
+    [ngClass]="{ 'quiz-class': quizpage }"
+    (notify)="hideComponent($event)"
+  ></app-main1>
 </div>
 
 <div id="game">
@@ -12,6 +17,7 @@
   <app-gamesection
     (isgamestart)="gamestatus($event)"
     *ngIf="!gamestarted"
+    [ngClass]="{ 'quiz-class': quizpage }"
   ></app-gamesection>
 </div>
 

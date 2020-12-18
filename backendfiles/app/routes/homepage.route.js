@@ -9,7 +9,7 @@ module.exports = app => {
     router.use(bodyParser.json());
     router.use(cors());
 
-    router.get("/",game.highscore);
+    router.get("/",verifyToken.verifyToken,game.highscore);
 
     app.use('/api/homepage', router);
 

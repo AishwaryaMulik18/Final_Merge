@@ -1,8 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
-
+import {CommonModule} from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -26,7 +26,6 @@ import { MyBarChartComponent } from './components/my-bar-chart/my-bar-chart.comp
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { TableChartComponent } from './components/table-chart/table-chart.component';
 import { AdminComponent } from './components/admin/admin.component';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UserSidenavComponent } from './components/userDashBoard/user-sidenav/user-sidenav.component';
 import { UserFavouriteComponent } from './components/userDashBoard/user-favourite/user-favourite.component';
@@ -37,8 +36,10 @@ import { HerosectionComponent } from './components/herosection/herosection.compo
 import { GamesectionComponent } from './components/gamesection/gamesection.component';
 import { HomeComponent } from './components/home/home.component';
 import { CheckloginComponent } from './components/checklogin/checklogin.component';
-import { HighscoreComponent } from './components/highscore/highscore.component';
-import { PlanetComponent } from './components/game/planet/planet.component';
+import { QuestionsComponent } from './components/questions/questions.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { ResultComponent } from './components/result/result.component';
+import { DisplayQuizComponent } from './components/display-quiz/display-quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,21 +65,26 @@ import { PlanetComponent } from './components/game/planet/planet.component';
     GamesectionComponent,
     HomeComponent,
     CheckloginComponent,
-    HighscoreComponent,
-    PlanetComponent,
+    QuestionsComponent,
+    QuizComponent,
+    ResultComponent,
+    DisplayQuizComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-
     ReactiveFormsModule,
     FormsModule,
 
     GoogleChartsModule,
     FlexLayoutModule,
+  ],
+  exports:[
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

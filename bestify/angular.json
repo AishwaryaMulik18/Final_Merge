@@ -31,12 +31,16 @@
               "src/assets"
             ],
             "styles": [
-             
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss",
               "src/theme.scss"
             ],
             "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
               "src/assets/js/loader.js",
+              "src/assets/jarallax.js",
+              "src/assets/jarallax-element.js",
               "./node_modules/vanilla-tilt/dist/vanilla-tilt.js"
             ]
           },

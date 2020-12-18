@@ -9,27 +9,34 @@ import { CarComponent } from './components/game/car/car.component';
 import { UserSidenavComponent } from './components/userDashBoard/user-sidenav/user-sidenav.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuardService } from './service/auth-guard.service';
-import { HighscoreComponent } from './components/highscore/highscore.component';
-import { PlanetComponent } from './components/game/planet/planet.component';
-import { AppComponent } from './app.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { QuestionsComponent } from './components/questions/questions.component';
+import { DisplayQuizComponent } from './components/display-quiz/display-quiz.component';
+import { ResultComponent } from './components/result/result.component';
 
 const routes: Routes = [
   { path: 'userprofile', component: UserSidenavComponent },
+  { path: 'home',component:HomeComponent},
   { path: 'pong', component: PongComponent },
   { path: 'car', component: CarComponent },
   { path: 'rps', component: RockpapersissorsComponent },
-  { path: 'planet', component: PlanetComponent },
-  
-  // { path: 'userprofile/userQuiz', component: UserquizComponent },
-  // { path: 'userprofile/userGame', component: UsergameComponent },
+  { path: 'userprofile/userQuiz', component: UserquizComponent },
+  { path: 'userprofile/userGame', component: UsergameComponent },
   // { path: 'userprofile/userFavourite', component: UserFavouriteComponent,
   // canActivate: [AuthGuardService]},
-
- { path: 'hs', component: HighscoreComponent },
- {path:'userQuiz',component:UserquizComponent},
-{path:'userGame',component:UsergameComponent},
-{path:'userFavourite',component:UserFavouriteComponent},
-// {path: '', component: AppComponent }
+  { path: 'userprofile/userFavourite', component: UserFavouriteComponent },
+  {
+    path:"Quiz/:QuizId/question/:id",component:QuizComponent
+  },
+  {
+      path:"Quiz/category/:category/Quiz/:QuizId",component:QuestionsComponent
+  },
+  {
+    path:"Quiz/category/:category",component:DisplayQuizComponent
+  },
+  {
+    path:"result/:QuizId",component:ResultComponent
+  }
 ];
 
 @NgModule({

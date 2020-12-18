@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-user-sidenav',
   templateUrl: './user-sidenav.component.html',
@@ -10,17 +8,16 @@ import { Router } from '@angular/router';
 export class UserSidenavComponent implements OnInit {
   public isMenuOpen: boolean = false;
 
-  constructor(private _location: Location, private router: Router) {}
+  constructor(private _location: Location) {
+    console.log('hiii');
+  }
   ngOnInit(): void {}
   public onSidenavClick(): void {
     this.isMenuOpen = false;
   }
-
   backToHome() {
-    // this._location.back();
-    // setTimeout(() => window.location.reload(), 100);
-    // window.location.reload();
-    this.router.navigateByUrl('');
-    setTimeout(() => window.location.reload(), 100);
+    this._location.back();
+    // setTimeout(() => window.location.reload(), 10);
+    window.location.reload();
   }
 }
